@@ -37,6 +37,35 @@ Hardware & Optimization Architecture
 >[!NOTE]
 >  This model is designed to serve as the "Reasoning Engine" for a larger RAG (Retrieval-Augmented Generation) chatbot system, which can be queried to provide automated answers directly from company documentation
 
+## 📊 Training Results & Model Performance
+
+**Model Configuration**
+
+Base Model: `unsloth/llama-3-8b-bnb-4bit`
+
+Total Parameters: `8,072,204,288`
+
+Trainable Parameters: `41,943,040 (0.52%)`
+
+Quantization: `4-bit QLoRA`
+
+Dataset Size: `1,000 samples`
+
+Epochs: `2`
+
+Batch Size: `2`
+
+Gradient Accumulation: `1`
+
+Hardware: `Single NVIDIA T4 (16GB)`
+
+
+**Analysis**:
+
+Validation loss reached its minimum (~0.385) at approximately Step 480–500 (≈1 epoch). Beyond Step 510, validation loss began a gradual increase, ultimately reaching 0.4016 by the end of training, while training loss continued to decline.
+
+This divergence indicates the onset of overfitting. Therefore, early stopping at approximately 1 epoch would likely maximize generalization performance on unseen data.
+
 ## Roadmap
 - [x] Instruction-based Fine-tuning on Llama-3 8B.
 
